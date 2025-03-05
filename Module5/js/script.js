@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 // random category into the home HTML snippet, and then insert that snippet into our
 // main page (index.html).
 //
-// TODO: STEP 1: Substitute [...] below with the *value* of the function buildAndShowHomeHTML,
+// TODO: !ith the *value* of the function buildAndShowHomeHTML,
 // so it can be called when server responds with the categories data.
 
 // *** start ***
