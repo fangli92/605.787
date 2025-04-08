@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" ng-app="NarrowItDownApp">
+  <head>
+    <title>Narrow Down Your Menu Choice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+<body>
+   <div class="container" ng-controller="NarrowItDownController as ctrl">
+    <h1>Narrow Down Your Chinese Menu Choice</h1>
+
+    <div class="form-group">
+      <input type="text" placeholder="search term" class="form-control" ng-model="ctrl.searchTerm">
+    </div>
+    <div class="form-group narrow-button">
+      <button class="btn btn-primary" ng-click="ctrl.narrowItDown()">Narrow It Down For Me!</button>
+    </div>
+    
+    <div ng-if="ctrl.loading" class="loader"></div>
+    
+    <div ng-if="ctrl.found.length">
+      <ul class="list-group">
+          <li class="list-group-item" ng-repeat="item in ctrl.found track by $index">
+              <strong>{{ item.name }}</strong> ({{ item.short_name }})
+              <p>{{ item.description }}</p>
+              <button class="btn btn-danger" ng-click="ctrl.removeItem($index)">Don't want this one!</button>
+          </li>
+      </ul>
+    </div>
+    <p class="text-danger" ng-if="ctrl.noResults">Nothing found</p>
+  </div>
+
+  <style>
+  .loader {
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #3498db;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+  }
+
+  @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+  }
+  </style>
+</body>
+</html>
